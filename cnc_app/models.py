@@ -26,9 +26,13 @@ class Emplacement(models.Model):
 
 class Designation(models.Model):
     nom = models.CharField(max_length=255, unique=True)
+    famille = models.ForeignKey(Famille, on_delete=models.CASCADE)
+    marque = models.CharField(max_length=100, default="non-spécifié")
+    modele = models.CharField(max_length=100, default="non-spécifié")
 
     def __str__(self):
         return self.nom
+
 
 class StatusArticle(models.Model):
     status_article = models.CharField(max_length=50)
@@ -60,8 +64,6 @@ class DetailEntree(models.Model):
     emplacement = models.ForeignKey(Emplacement, on_delete=models.CASCADE)
     code_article = models.CharField(max_length=50, blank=True, null=True)
     status = models.ForeignKey(StatusArticle, on_delete=models.CASCADE)
-    marque = models.CharField(max_length=100, default="non-spécifié")
-    modele = models.CharField(max_length=100, default="non-spécifié")
     date_ajout = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

@@ -10,7 +10,7 @@ class FamilleSerializer(serializers.ModelSerializer):
 class DesignationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Designation
-        fields = ['id', 'nom']
+        fields = ['id', 'nom', 'famille', 'marque', 'modele']
 
 class StatusArticleSerializer(serializers.ModelSerializer):
     class Meta: 
@@ -32,14 +32,16 @@ class DetailEntreeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = DetailEntree
-        fields = ['id', 'article', 'quantite_entree', 'origine', 'origine_nom', 'emplacement', 'emplacement_nom','code_article', 'status', 'marque', 'modele', 'date_ajout']
+        fields = ['id', 'article', 'quantite_entree', 'origine', 'origine_nom', 'emplacement', 'emplacement_nom','code_article', 'status', 'date_ajout']
         
 class ArticleSerializer(serializers.ModelSerializer):
     famille_nom = serializers.CharField(source='famille.nom', read_only=True)
     designation_nom = serializers.CharField(source='designation.nom', read_only=True)
     details_entree = DetailEntreeSerializer(many=True, source='detailentree_set', read_only=True)
+    marque = serializers.CharField(source='designation.marque', read_only=True)  
+    modele = serializers.CharField(source='designation.modele', read_only=True)   
 
     class Meta:
         model = Article
-        fields = ['id', 'designation', 'designation_nom', 'famille', 'famille_nom', 'details_entree']
+        fields = ['id', 'designation', 'designation_nom', 'famille', 'famille_nom', 'marque', 'modele','details_entree']
 
