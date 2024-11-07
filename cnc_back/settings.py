@@ -81,20 +81,20 @@ WSGI_APPLICATION = 'cnc_back.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     "default": dj_database_url.parse("postgresql://fbackup_cnc_user:PM71Nar1QGLjpqvN0GjLAcl0gAW8NDYk@dpg-csd2lq56l47c73flo180-a.oregon-postgres.render.com/fbackup_cnc")
-# }
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'f-back-cnc',
-        'USER': 'postgres',
-        'PASSWORD': 'Moh@med9394@',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    },
+    "default": dj_database_url.parse("postgresql://fbackup_cnc_user:PM71Nar1QGLjpqvN0GjLAcl0gAW8NDYk@dpg-csd2lq56l47c73flo180-a.oregon-postgres.render.com/fbackup_cnc")
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'f-back-cnc',
+#         'USER': 'postgres',
+#         'PASSWORD': 'Moh@med9394@',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     },
+# }
 
 
 # Password validation
